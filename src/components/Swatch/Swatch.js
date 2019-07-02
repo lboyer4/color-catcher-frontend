@@ -19,7 +19,6 @@ class Swatch extends Component {
 				<div className='color'></div>
 				<div className='color'></div>
 				<div className='color'></div>
-				<div className='color'></div>
 			</section>)
 	}
 }
