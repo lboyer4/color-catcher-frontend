@@ -26,6 +26,9 @@ class App extends Component {
 			<div>
 				<Header />
 				<Swatch />
+				<section>
+					<Projects />
+				</section>
 			</div>
 		)
 	}
