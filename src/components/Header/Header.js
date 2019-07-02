@@ -5,7 +5,7 @@ export const Header = () => {
 	return(
 		<header>
 			<h1>Color Catcher</h1>
-			<button>Generate Colors</button>
+			<button className='generate'>Generate Colors</button>
 		</header>
 	)
 }

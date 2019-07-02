@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import './_App.scss';
-import { Header } from '../Header/Header.js'
+import { Header } from '../Header/Header.js';
+import Swatch from '../Swatch/Swatch.js';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			colors: []
+			codes: []
 		}
+	}
+
+	//generate hex code function
+	
+	componentDidMount = () => {
+		//call generateCodes()
 	}
 
 	render() {
 		return(
 			<div>
 				<Header />
-				<h1> hi </h1>
+				<Swatch />
 			</div>
 		)
 	}
