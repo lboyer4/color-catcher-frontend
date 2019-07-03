@@ -31,11 +31,11 @@ componentDidMount = () => {
 	render() {
 		return(
 			<section className='swatch-holder'>
-				<div className='color'></div>
-				<div className='color'></div>
-				<div className='color'></div>
-				<div className='color'></div>
-				<div className='color'></div>
+				<div className='color' style={{backgroundColor: this.state.colors[0]}}></div>
+				<div className='color' style={{backgroundColor: this.state.colors[1]}}></div>
+				<div className='color' style={{backgroundColor: this.state.colors[2]}}></div>
+				<div className='color' style={{backgroundColor: this.state.colors[3]}}></div>
+				<div className='color' style={{backgroundColor: this.state.colors[4]}}></div>
 			</section>)
 	}
 }

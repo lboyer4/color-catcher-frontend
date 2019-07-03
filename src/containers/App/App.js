@@ -13,12 +13,6 @@ class App extends Component {
 		}
 	}
 
-	//generate hex code function
-	// generateCodes = () => {
-	// 	let code = ''
-	// 	codes.push(code)
-	// }
-	
 	componentDidMount = () => {
 		//call generateCodes()
 	}
