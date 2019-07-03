@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './_App.scss';
 import { Header } from '../Header/Header.js';
 import Swatch from '../Swatch/Swatch.js';
+import Projects from '../Projects/Projects.js';
+import Palettes from '../Palettes/Palettes.js';
 
 class App extends Component {
 	constructor() {
@@ -26,8 +28,9 @@ class App extends Component {
 			<div>
 				<Header />
 				<Swatch />
-				<section>
+				<section className='file-holder'>
 					<Projects />
+					<Palettes />
 				</section>
 			</div>
 		)
