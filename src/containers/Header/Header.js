@@ -4,33 +4,38 @@ import { makePalette, clearPalette } from '../../actions';
 import { connect } from 'react-redux';
 
 class Header extends Component {
-	constructor() {
-		super();
-		this.state = {
-			colors: []
-		}
-	}
 
 	componentDidMount = () => {
 		this.generateColors()
 	}
-	
+
 	handleClick = () => {
-		this.setState({colors: []})
-		this.generateColors()
+		const oldColors = this.props.palette;
+		this.generateColors(oldColors)
 	}
 
-	generateColors = () => {
-		let colorObject = {locked: false}
-		for(let i = 0; i < 5; i++) {
+	generateColors = (oldColors) => {
+		let newColors = [];
+		if (oldColors) {
+			newColors = oldColors.map(color => {
+				if(color.locked) return color;
+				return {locked: false, color: this.generateHex()}
+			})	
+		} else {
+			for(let i = 0; i < 5; i++) {
+				newColors.push({locked: false, color: this.generateHex()})
+			}
+		}
+		this.props.makePalette(newColors);
+	}
+
+	generateHex = () => {
 		const characters = "0123456789ABCDEF";
 		let color = '#'
-			for(let i = 0; i< 6; i++)
-				color+= characters[(Math.floor(Math.random() * 16))]
-			colorObject = {...colorObject, color}
-			this.state.colors.push(colorObject)
+		for (let i = 0; i< 6; i++) {
+			color += characters[(Math.floor(Math.random() * 16))]
 		}
-		this.props.makePalette(this.state.colors);
+		return color;
 	}
 
 	render() {
