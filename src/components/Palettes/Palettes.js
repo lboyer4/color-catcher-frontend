@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './_Palettes.scss';
+import './_Palettes.scss';
 
 class Palettes extends Component {
 	constructor() {
@@ -11,7 +11,7 @@ class Palettes extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='palette-holder'>
 				<h1>Palettes</h1>
 			</div>)
 	}
