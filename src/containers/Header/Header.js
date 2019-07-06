@@ -16,14 +16,11 @@ class Header extends Component {
 
 	generateColors = (oldColors) => {
 		let newColors = [];
-		if (oldColors) {
-			newColors = oldColors.map(color => {
-				if(color.locked) return color;
-				return {locked: false, color: this.generateHex()}
-			})	
-		} else {
-			for(let i = 0; i < 5; i++) {
-				newColors.push({locked: false, color: this.generateHex()})
+		for(let i = 0; i < 5; i++) {
+			if (oldColors && oldColors[i].locked) {
+				newColors.push(oldColors[i])
+			} else {
+				newColors.push({locked: false, color: this.generateHex()});	
 			}
 		}
 		this.props.makePalette(newColors);
