@@ -16,14 +16,21 @@ class Swatch extends Component {
 
 	render() {
 		console.log(this.props.palette)
+		const { palette } = this.props
+		const paletteDisplay = palette.length && <section className='swatch-holder'>
+				<div className='color' style={{backgroundColor: palette[0].color}}></div>
+				<div className='color' style={{backgroundColor: palette[1].color}}></div>
+				<div className='color' style={{backgroundColor: palette[2].color}}></div>
+				<div className='color' style={{backgroundColor: palette[3].color}}></div>
+				<div className='color' style={{backgroundColor: palette[4].color}}></div>
+			</section>
+		 
+		// console.log(this.props.palette[0]['color'])
+		console.log(this.props.palette[0])
 		return(
-			<section className='swatch-holder'>
-				<div className='color' style={{backgroundColor: this.props.palette[0]}}></div>
-				<div className='color' style={{backgroundColor: this.props.palette[1]}}></div>
-				<div className='color' style={{backgroundColor: this.props.palette[2]}}></div>
-				<div className='color' style={{backgroundColor: this.props.palette[3]}}></div>
-				<div className='color' style={{backgroundColor: this.props.palette[4]}}></div>
-			</section>)
+			<div>
+				{paletteDisplay}
+			</div>)
 	}
 }
 
