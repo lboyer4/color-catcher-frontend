@@ -22,12 +22,14 @@ class Header extends Component {
 // map through colors to make object with lock/unlock
 
 	generateColors = () => {
+		let colorObject = {locked: false}
 		for(let i = 0; i< 5; i++) {
 		const characters = "0123456789ABCDEF";
 		let color = '#'
 		for(let i = 0; i< 6; i++)
 			color+= characters[(Math.floor(Math.random() * 16))]
-		this.state.colors.push(color)
+		colorObject = {...colorObject, color}
+		this.state.colors.push(colorObject)
 	}
 	this.props.makePalette(this.state.colors);
 }
