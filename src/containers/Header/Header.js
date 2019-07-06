@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './_Header.scss';
-import { makePalette } from '../../actions';
+import { makePalette, clearPalette } from '../../actions';
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -12,13 +12,17 @@ class Header extends Component {
 	}
 
 	componentDidMount = () => {
-		console.log('hello')
-	this.generateColors()
-}
+		this.generateColors()
+	}
+	
+	handleClick = () => {
+		this.setState({colors: []})
+		this.generateColors()
+	}
 
 	generateColors = () => {
 		let colorObject = {locked: false}
-		for(let i = 0; i< 5; i++) {
+		for(let i = 0; i < 5; i++) {
 		const characters = "0123456789ABCDEF";
 		let color = '#'
 			for(let i = 0; i< 6; i++)
@@ -31,10 +35,12 @@ class Header extends Component {
 
 	render() {
 		return(
-			<header>
-				<h1>Color Catcher</h1>
-				<button className='generate'>Generate Colors</button>
-			</header>
+			<main>
+				<header>
+					<h1>Color Catcher</h1>
+					<button className='generate' onClick={this.handleClick} >Generate Colors</button>
+				</header>
+			</main>
 		)
 	}
 }
@@ -43,8 +49,9 @@ const mapStateToProps = (state) => ({
 	palette: state.palette
 });
 
- const mapDispatchToProps = (dispatch) => ({
- 	makePalette: (palette) => dispatch(makePalette(palette))
- });
+const mapDispatchToProps = (dispatch) => ({
+	makePalette: (palette) => dispatch(makePalette(palette)),
+ 	clearPalette: (palette) => dispatch(clearPalette(palette))
+});
 
- export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
