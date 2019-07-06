@@ -11,30 +11,22 @@ class Swatch extends Component {
 		}
 	}
 
-	componentDidUpdate = () => {
-		console.log('redux props', this.props.palette)
-		console.log('state', this.state.colors)
-		if(this.state.colors !== this.props.palette){
-			this.newColors()
-		}
-	}
-
-	newColors = () => {
-		this.setState({colors: this.props.palette})
-	}
-
-	handleClick = (e) => {
-		console.log(e.target)
+	handleLock = (e) => {
+		const index = e.target.parentElement.getAttribute('data-key')
+		console.log('state of colors', this.props.palette)
+		let newColors = this.props.palette
+		newColors[index].locked = !newColors[index].locked
+		this.setState({colors: newColors})
 	}
 
 	render() {
 		const { palette } = this.props
-		console.log('pal', palette)
-		
 		const paletteDisplay = palette.length && 
 			palette.map((element, index) => {
-				return <div className='color' key={index} style={{backgroundColor: element.color}} onClick={this.handleClick}>
+				console.log('element', element)
+				return <div className='color' key={index} data-key={index} style={{backgroundColor: element.color}}>
 				<h1>{element.color}</h1>
+				<h2 onClick={this.handleLock}>{element.locked ? 'true' : 'false'}</h2>
 				</div>
 			})
 			
