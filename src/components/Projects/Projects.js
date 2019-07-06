@@ -11,7 +11,6 @@ class Projects extends Component {
 	}
 
 	handleChange = (e) => {
-		console.log(e.target.value)
 		this.setState({title: e.target.value})   
   }
 
@@ -20,7 +19,6 @@ class Projects extends Component {
 		let projects = this.state.projects
 		projects.push(this.state.title)
 		this.setState({ projects })
-		e.target.value = ''
 		//post project name to backend
 	}
 
