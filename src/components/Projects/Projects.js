@@ -5,17 +5,43 @@ class Projects extends Component {
 	constructor() {
 		super();
 		this.state = {
-			projects: ['project one', 'project two']
+			title: '',
+			projects: []
 		}
 	}
 
+	handleChange = (e) => {
+		console.log(e.target.value)
+		this.setState({title: e.target.value})   
+  }
+
+	makeProject = (e) => {
+		e.preventDefault()
+		let projects = this.state.projects
+		projects.push(this.state.title)
+		this.setState({ projects })
+		e.target.value = ''
+		//post project name to backend
+	}
+
 	render() {
+		const projectNames = this.state.projects.length ? this.state.projects.map(name => {
+			return <h2>{name}</h2>
+		}) : ''
 		return (
 			<div className='project-holder'>
-				<button className='create-project'> New Project +</button>
+				<form> 
+					<label>Name Project</label>
+					<input
+						type="text"
+	          onChange={this.handleChange}
+	          
+	          name='title'
+	         />
+					<button onClick={this.makeProject}>Create</button> 
+				</form>
 				<h1>Projects</h1>
-				<h2>{this.state.projects[0]}</h2>
-				<h2>{this.state.projects[1]}</h2>
+				{projectNames}
 			</div>
 		)
 	}

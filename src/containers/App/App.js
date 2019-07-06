@@ -6,16 +6,16 @@ import Projects from '../../components/Projects/Projects.js';
 import Palettes from '../../components/Palettes/Palettes.js';
 
 class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			codes: []
-		}
-	}
+	// constructor() {
+	// 	super();
+	// 	this.state = {
+	// 		projects: []
+	// 	}
+	// }
 
-	componentDidMount = () => {
-		//call generateCodes()
-	}
+	// componentDidMount = () => {
+	// 	//call generateCodes()
+	// }
 
 	render() {
 		return(
