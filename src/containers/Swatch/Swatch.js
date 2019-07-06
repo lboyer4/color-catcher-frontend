@@ -11,26 +11,17 @@ class Swatch extends Component {
 		}
 	}
 
-	//set state with color code props
-	//use index to put in color divs
-
 	render() {
-		console.log(this.props.palette)
 		const { palette } = this.props
-		const paletteDisplay = palette.length && <section className='swatch-holder'>
-				<div className='color' style={{backgroundColor: palette[0].color}}></div>
-				<div className='color' style={{backgroundColor: palette[1].color}}></div>
-				<div className='color' style={{backgroundColor: palette[2].color}}></div>
-				<div className='color' style={{backgroundColor: palette[3].color}}></div>
-				<div className='color' style={{backgroundColor: palette[4].color}}></div>
-			</section>
-		 
-		// console.log(this.props.palette[0]['color'])
-		console.log(this.props.palette[0])
+		const paletteDisplay = palette.length && 
+			palette.map((element, index) => {
+				return <div className='color' key={index} style={{backgroundColor: element.color}}></div>
+			})
+			
 		return(
-			<div>
+			<section className='swatch-holder'>
 				{paletteDisplay}
-			</div>)
+			</section>)
 	}
 }
 
