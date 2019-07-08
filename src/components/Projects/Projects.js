@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
-import { setProjects, deleteProject } from '../../actions';
+import { setProjects, deleteProject, addProject } from '../../actions';
 
 
 class Projects extends Component {
@@ -9,7 +9,6 @@ class Projects extends Component {
 		super();
 		this.state = {
 			title: '',
-			projects: []
 		}
 	}
 
@@ -18,14 +17,6 @@ class Projects extends Component {
 		.then(response => response.json())
 		.then(projects => this.props.setProjects(projects))
 	}
-
-	getProjects = (projects) => {
-		console.log('here are the projects', projects)
-		let allProjects = this.state.projects;
-		projects.forEach(project => {
-			allProjects.push(project)
-		})
-	}
 	
 	handleChange = (e) => {
 		this.setState({title: e.target.value})   
@@ -33,8 +24,6 @@ class Projects extends Component {
 
 	makeProject = (e) => {
 		e.preventDefault()
-		let projects = [...this.props.projects]
-		projects.push(this.state.title)
 		this.postProject(this.state.title)
 	}
 
@@ -53,10 +42,11 @@ class Projects extends Component {
 			if(!response.ok) {
 				throw Error('Error posting project')
 			} else {
-				console.log(response)
+				return response
 			}
 		})
-		.catch(error => console.log(error))
+		.then(result => result.json())
+		.then(body => this.props.addProject({id: body.id, name}))
 	}
 
 	deleteProject = (e) => {
@@ -69,7 +59,8 @@ class Projects extends Component {
 	}
 
 	render() {
-		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
+		console.log(this.props.projects.length)
+		const projectNames = this.props.projects.length ? this.props.projects.map(project => { console.log(project.id)
 			return (
 				<div key={project.id}>
 					<h2>{project.name}</h2>
@@ -104,6 +95,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	setProjects: (projects) => dispatch(setProjects(projects)),
+	addProject: (project) => dispatch(addProject(project)),
 	deleteProject: (id) => dispatch(deleteProject(id))
 });
 
