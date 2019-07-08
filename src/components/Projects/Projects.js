@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
-import { addProjects } from '../../actions';
+import { addProjects, deleteProject } from '../../actions';
 
 
 class Projects extends Component {
@@ -33,14 +33,12 @@ class Projects extends Component {
 
 	makeProject = (e) => {
 		e.preventDefault()
-		let projects = this.state.projects
+		let projects = [...this.props.projects]
 		projects.push(this.state.title)
-		this.setState({ projects })
 		this.postProject(this.state.title)
 	}
 
 	postProject = (title) => {
-		console.log(title)
 		let name = title
 		let options = {
       method: "POST",
@@ -55,16 +53,33 @@ class Projects extends Component {
 			if(!response.ok) {
 				throw Error('Error posting project')
 			} else {
-				console.log(response)
+				response.body.on('readable', (stream) => {
+					console.log(stream.read())
+				})
 			}
 		})
 		.catch(error => console.log(error))
 	}
 
+	deleteProject = (e) => {
+		let options = {
+      method: "DELETE"
+    };
+		const idToDelete = e.target.getAttribute('data-key')
+		this.props.deleteProject(idToDelete)
+		fetch(`http://localhost:3001/api/v1/project/${idToDelete}`, options)
+	}
+
 	render() {
 		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
-			console.log('where is this', project)
-			return <h2>{project.name}</h2>
+			return (
+				<div key={project.id}>
+					<h2>{project.name}</h2>
+					<button data-key={project.id} onClick={this.deleteProject}>
+						Delete
+					</button>
+				</div> 
+			)
 		}) : ''
 
 		return (
@@ -90,7 +105,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	addProjects: (projects) => dispatch(addProjects(projects))
+	addProjects: (projects) => dispatch(addProjects(projects)),
+	deleteProject: (id) => dispatch(deleteProject(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);
