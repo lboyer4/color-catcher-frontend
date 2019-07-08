@@ -27,4 +27,18 @@ describe('actions', () => {
 
     expect(result).toEqual(expected)
   });
+
+  it('should return single project with a type of ADD_PROJECT', () => {
+    const project = {
+      name: "Project 2"
+    }
+
+    const expected = {
+      type: 'ADD_PROJECT',
+      project
+    }
+    const result = actions.addProject(project);
+
+    expect(result).toEqual(expected)
+  })
 })
