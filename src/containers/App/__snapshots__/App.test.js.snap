@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<div>
+  <Connect(Header) />
+  <Connect(Swatch) />
+  <section
+    className="file-holder"
+  >
+    <Connect(Projects) />
+    <Palettes />
+  </section>
+</div>
+`;
