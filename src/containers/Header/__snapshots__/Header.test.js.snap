@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot 1`] = `
+<main>
+  <header>
+    <h1>
+      Color Catcher
+    </h1>
+    <button
+      className="generate"
+      onClick={[Function]}
+    >
+      Generate Colors
+    </button>
+  </header>
+</main>
+`;

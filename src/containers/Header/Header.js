@@ -3,7 +3,7 @@ import './_Header.scss';
 import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
 
-class Header extends Component {
+export class Header extends Component {
 
 	componentDidMount = () => {
 		this.generateColors()
@@ -47,11 +47,11 @@ class Header extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	palette: state.palette
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
 	makePalette: (palette) => dispatch(makePalette(palette))
 });
 
