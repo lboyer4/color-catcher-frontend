@@ -40,5 +40,19 @@ describe('actions', () => {
     const result = actions.addProject(project);
 
     expect(result).toEqual(expected)
+  });
+
+  it('should return id with a type of DELETE_PROJECT', () => {
+    const id = {
+      id: 9
+    }
+
+    const expected = {
+      type: 'DELETE_PROJECT',
+      id
+    }
+    const result = actions.deleteProject(id);
+
+    expect(result).toEqual(expected)
   })
 })
