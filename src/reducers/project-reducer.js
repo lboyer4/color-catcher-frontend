@@ -6,7 +6,7 @@ const project = (state=initialState, action) => {
 			return action.projects
 		case 'DELETE_PROJECT':
 			return state.filter(project => {
-				return project.id != action.id
+				return project.id !== Number(action.id)
 			})
 		default: 
 			return state
