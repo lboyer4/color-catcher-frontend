@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './_App.scss';
-import { Header } from '../../components/Header/Header.js';
+import Header from '../Header/Header.js';
 import Swatch from '../Swatch/Swatch.js';
 import Projects from '../../components/Projects/Projects.js';
 import Palettes from '../../components/Palettes/Palettes.js';

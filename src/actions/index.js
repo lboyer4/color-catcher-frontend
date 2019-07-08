@@ -4,3 +4,10 @@ export const makePalette = (palette) => {
 		palette
 	}
 }
+
+export const clearPalette = (palette) => {
+	return {
+		type: 'CLEAR_PALETTE',
+		palette
+	}
+}
