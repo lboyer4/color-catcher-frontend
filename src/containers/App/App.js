@@ -9,13 +9,10 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			codes: []
+			projects: []
 		}
 	}
 
-	componentDidMount = () => {
-		//call generateCodes()
-	}
 
 	render() {
 		return(
@@ -30,6 +27,7 @@ class App extends Component {
 		)
 	}
 }
+
 
 
 export default App;

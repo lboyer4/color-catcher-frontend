@@ -10,4 +10,4 @@ const palette = (state=initialState, action) => {
 	}
 }
 
-export default palette
+export default palette;
