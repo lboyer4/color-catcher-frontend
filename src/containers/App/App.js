@@ -4,18 +4,19 @@ import Header from '../Header/Header.js';
 import Swatch from '../Swatch/Swatch.js';
 import Projects from '../../components/Projects/Projects.js';
 import Palettes from '../../components/Palettes/Palettes.js';
-
+import { addProjects } from '../../actions';
+import { connect } from 'react-redux';
 class App extends Component {
-	// constructor() {
-	// 	super();
-	// 	this.state = {
-	// 		projects: []
-	// 	}
-	// }
+	constructor() {
+		super();
+		this.state = {
+			projects: []
+		}
+	}
 
-	// componentDidMount = () => {
-	// 	//call generateCodes()
-	// }
+	getPalettes = (palettes) => {
+		console.log(palettes)
+	}
 
 	render() {
 		return(
@@ -31,5 +32,8 @@ class App extends Component {
 	}
 }
 
+const mapDispatchToProps = (dispatch) => ({
+	addProjects: (projects) => dispatch(addProjects(projects))
+});
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

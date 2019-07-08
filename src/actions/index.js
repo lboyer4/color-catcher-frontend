@@ -5,9 +5,16 @@ export const makePalette = (palette) => {
 	}
 }
 
-export const clearPalette = (palette) => {
+// export const clearPalette = (palette) => {
+// 	return {
+// 		type: 'CLEAR_PALETTE',
+// 		palette
+// 	}
+// }
+
+export const addProjects = (projects) => {
 	return {
-		type: 'CLEAR_PALETTE',
-		palette
+		type: 'ADD_PROJECTS',
+		projects
 	}
 }

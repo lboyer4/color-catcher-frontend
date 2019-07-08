@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './_Header.scss';
-import { makePalette, clearPalette } from '../../actions';
+import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -52,8 +52,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	makePalette: (palette) => dispatch(makePalette(palette)),
- 	clearPalette: (palette) => dispatch(clearPalette(palette))
+	makePalette: (palette) => dispatch(makePalette(palette))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
