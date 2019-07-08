@@ -25,6 +25,7 @@ class Projects extends Component {
 	makeProject = (e) => {
 		e.preventDefault()
 		this.postProject(this.state.title)
+		this.setState({title: ''})
 	}
 
 	postProject = (title) => {
@@ -79,6 +80,7 @@ class Projects extends Component {
 						type="text"
 	          onChange={this.handleChange}
 	          name='title'
+	          value={this.state.title}
 	         />
 					<button onClick={this.makeProject}>Create</button> 
 				</form>
