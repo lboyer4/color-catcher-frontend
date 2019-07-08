@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
-import { addProjects, deleteProject } from '../../actions';
+import { setProjects, deleteProject } from '../../actions';
 
 
 class Projects extends Component {
@@ -16,7 +16,7 @@ class Projects extends Component {
 	componentDidMount = () => {
 		fetch('http://localhost:3001/api/v1/project')
 		.then(response => response.json())
-		.then(projects => this.props.addProjects(projects))
+		.then(projects => this.props.setProjects(projects))
 	}
 
 	getProjects = (projects) => {
@@ -53,9 +53,7 @@ class Projects extends Component {
 			if(!response.ok) {
 				throw Error('Error posting project')
 			} else {
-				response.body.on('readable', (stream) => {
-					console.log(stream.read())
-				})
+				console.log(response)
 			}
 		})
 		.catch(error => console.log(error))
@@ -105,7 +103,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	addProjects: (projects) => dispatch(addProjects(projects)),
+	setProjects: (projects) => dispatch(setProjects(projects)),
 	deleteProject: (id) => dispatch(deleteProject(id))
 });
 

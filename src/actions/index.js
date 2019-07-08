@@ -5,10 +5,9 @@ export const makePalette = (palette) => {
 	}
 }
 
-
-export const addProjects = (projects) => {
+export const setProjects = (projects) => {
 	return {
-		type: 'ADD_PROJECTS',
+		type: 'SET_PROJECTS',
 		projects
 	}
 }
