@@ -16,6 +16,7 @@ class Swatch extends Component {
 
 	render() {
 		const { palette } = this.props
+		console.log('palette:', palette)
 		const paletteDisplay = palette.length && 
 			palette.map((element, index) => {
 				return <div className='color' key={index} data-key={index} style={{backgroundColor: element.color}}>
