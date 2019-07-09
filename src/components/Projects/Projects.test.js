@@ -67,6 +67,20 @@ describe('Projects', () => {
 		});
 	});
 
+	describe('deleteProject', () => {
+		it('should call deleteProject', () => {
+			const mockTitleEvent = {
+				target: {
+					getAttribute: () => {
+						return 1}
+				}
+			};
+			
+			wrapper.instance().deleteProject(mockTitleEvent)
+			expect(wrapper.instance().props.deleteProject).toHaveBeenCalledWith(1)
+		});
+	});
+
 	describe('mapStateToProps', () => {
 		it('should return an array of objects', () => {
 			const mockState = {
