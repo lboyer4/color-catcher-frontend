@@ -1,4 +1,4 @@
-const initialState = []
+const initialState = [];
 const palette = (state=initialState, action) => {
 	switch (action.type) {
 		case 'MAKE_PALETTE':

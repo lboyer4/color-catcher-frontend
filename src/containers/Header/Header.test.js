@@ -41,10 +41,8 @@ describe('Header', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	it.skip('should handleClick', () => {
-		const mockClickEvent = {
-			preventDefault: () => {}
-		};
+	it('should handleClick', () => {
+	
 		const mockOldColors = [
 				{	locked: false,
 					color: "#909C0E"
@@ -66,12 +64,58 @@ describe('Header', () => {
 
 		wrapper = shallow(
 			<Header 
-				generateColors={jest.fn()}
+				makePalette={mockMakePalette}
+				palette={mockOldColors}
 			/>)
 
-		wrapper.instance().handleClick(mockClickEvent);
-		expect(wrapper.instance().props.generateColors).toHaveBeenCalledWith(mockOldColors)
+		wrapper.instance().generateColors = jest.fn()
+		wrapper.instance().handleClick();
+		expect(wrapper.instance().generateColors).toHaveBeenCalled()
 	})
+
+	describe('generateColors', () => {
+		it('should call generateHex if there is not 5 old colors', () => {
+
+			wrapper.instance().generateHex = jest.fn()
+
+			wrapper.instance().generateColors();
+			expect(wrapper.instance().generateHex).toHaveBeenCalled()
+			expect(wrapper.instance().props.makePalette).toHaveBeenCalled()
+		});
+
+		it('should call make makePalette with new colors', () => {
+
+			const mockNewColors = [
+
+				{	locked: false,
+					color: "#909C0E"
+				},
+				{	locked: false,
+					color: "#82BBC8"
+				},
+				{	locked: false,
+					color: "#82BBC8"
+				},
+				{
+					locked: false,
+					color: "#82BBC8"
+				},
+				{	locked: false,
+					color: "#909C0E"
+				}
+			]
+
+		wrapper = shallow(
+			<Header 
+				makePalette={mockMakePalette}
+				palette={mockNewColors}
+			/>
+		)
+
+		wrapper.instance().generateColors()
+
+		});
+	});
 
 	describe('mapStateToProps', () => {
 		it('should return an array of objects', () => {
@@ -94,7 +138,7 @@ describe('Header', () => {
 					color: "#909C0E"
 				}
 			],
-				projects: []
+				project: []
 		}
 
 			const expected = {

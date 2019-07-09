@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setProjects, deleteProject, addProject } from '../../actions';
 
 
-class Projects extends Component {
+export class Projects extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -60,8 +60,7 @@ class Projects extends Component {
 	}
 
 	render() {
-		console.log(this.props.projects.length)
-		const projectNames = this.props.projects.length ? this.props.projects.map(project => { console.log(project.id)
+		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
 			return (
 				<div key={project.id}>
 					<h2>{project.name}</h2>
@@ -91,11 +90,11 @@ class Projects extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	projects: state.project
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
 	setProjects: (projects) => dispatch(setProjects(projects)),
 	addProject: (project) => dispatch(addProject(project)),
 	deleteProject: (id) => dispatch(deleteProject(id))
