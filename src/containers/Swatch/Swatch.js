@@ -3,7 +3,7 @@ import './_Swatch.scss';
 import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
 
-class Swatch extends Component {
+export class Swatch extends Component {
 
 
 	handleLock = (e) => {
@@ -31,11 +31,11 @@ class Swatch extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	palette: state.palette
 })
 
- const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
  	makePalette: (palette) => dispatch(makePalette(palette))
  });
 

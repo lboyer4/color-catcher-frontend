@@ -41,6 +41,38 @@ describe('Header', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
+	it.skip('should handleClick', () => {
+		const mockClickEvent = {
+			preventDefault: () => {}
+		};
+		const mockOldColors = [
+				{	locked: false,
+					color: "#909C0E"
+				},
+				{	locked: false,
+					color: "#82BBC8"
+				},
+				{	locked: false,
+					color: "#82BBC8"
+				},
+				{
+					locked: false,
+					color: "#82BBC8"
+				},
+				{	locked: false,
+					color: "#909C0E"
+				}
+			]
+
+		wrapper = shallow(
+			<Header 
+				generateColors={jest.fn()}
+			/>)
+
+		wrapper.instance().handleClick(mockClickEvent);
+		expect(wrapper.instance().props.generateColors).toHaveBeenCalledWith(mockOldColors)
+	})
+
 	describe('mapStateToProps', () => {
 		it('should return an array of objects', () => {
 			const mockState = {
