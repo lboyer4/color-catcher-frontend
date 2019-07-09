@@ -33,6 +33,26 @@ describe('Projects', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
+	describe('handleChange', () => {
+		it('should set state with title', () => {
+
+			const mockTitleEvent = {
+				target: {
+					value: 'Project One'
+				}
+			};
+
+			const wrapper = shallow(
+				<Projects 
+					projects={mockProjects}
+				/>
+			);
+
+			wrapper.instance().handleChange(mockTitleEvent);
+			expect(wrapper.state().title).toEqual('Project One');
+		});
+	});
+
 	describe('mapStateToProps', () => {
 		it('should return an array of objects', () => {
 			const mockState = {
@@ -59,7 +79,7 @@ describe('Projects', () => {
 						id: 1
 					}
 				]
-			}
+			};
 
 			const expected = { 
 				projects: [
@@ -67,7 +87,7 @@ describe('Projects', () => {
 					id: 1
 				}
 			]
-		}
+		};
 		
 		const mappedProps = mapStateToProps(mockState);
 
@@ -126,7 +146,7 @@ describe('Projects', () => {
 			const mockDispatch = jest.fn();
 
 			const actionToDispatch = deleteProject(mockId);
-			
+
 			const mappedProps = mapDispatchToProps(mockDispatch);
 
 			mappedProps.deleteProject(mockId);
