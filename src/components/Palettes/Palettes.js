@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './_Palettes.scss';
 import { connect } from 'react-redux';
+import { addPalette } from '../../actions';
 
 export class Palettes extends Component {
 	constructor() {
@@ -20,11 +21,10 @@ export class Palettes extends Component {
 			acc[`color_${index+1}`] = colorObject.color.slice(1)
 			return acc
 		}, {})
-		console.log('colors colors colors', colors)
-		// const newPalette = {name: this.state.name, }
-		// this.props.addPalette()
-		// console.log(this.props.palette)
-	}
+		
+		const newPalette = {...colors, name: this.state.name, project_id: this.props.project.id}
+		this.props.addPalette(newPalette)
+		}
 
 	render() {
 		return (
@@ -42,6 +42,8 @@ export const mapStateToProps = (state) => ({
 	palette: state.palette
 });
 
+export const mapDispatchToProps = (dispatch) => ({
+	addPalette: (palette) => dispatch(addPalette(palette))
+});
 
-
-export default connect(mapStateToProps)(Palettes);
+export default connect(mapStateToProps, mapDispatchToProps)(Palettes);
