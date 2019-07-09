@@ -78,10 +78,6 @@ describe('Projects', () => {
 	describe('mapDispatchToProps', () => {
 		it('should call dispatch when using setProjects', () => {
 
-			const mockProject = {
-				name: 'project one',
-				id: 1
-			};
 			const mockProjects = [
 				{
 					name: 'project one',
@@ -103,6 +99,39 @@ describe('Projects', () => {
 
 			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
 
+		});
+
+		it('should call dispatch when using addProject', () => {
+
+			const mockProject = {
+				name: 'project one',
+				id: 1
+			};
+
+			const mockDispatch =jest.fn();
+
+			const actionToDispatch = addProject(mockProject);
+
+			const mappedProps = mapDispatchToProps(mockDispatch);
+
+			mappedProps.addProject(mockProject);
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+		});
+
+		it('should call dispatch when using deleteProject', () => {
+
+			const mockId = 1;
+
+			const mockDispatch = jest.fn();
+
+			const actionToDispatch = deleteProject(mockId);
+			
+			const mappedProps = mapDispatchToProps(mockDispatch);
+
+			mappedProps.deleteProject(mockId);
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
 		});
 	});
 });
