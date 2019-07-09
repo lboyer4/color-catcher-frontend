@@ -72,7 +72,7 @@ describe('Projects', () => {
 			const mockTitleEvent = {
 				target: {
 					getAttribute: () => {
-						return 1}
+						return 1 }
 				}
 			};
 			
@@ -183,5 +183,8 @@ describe('Projects', () => {
 		});
 	});
 });
+
+//mock out fetch
+//break out fetches and test individually
 
 
