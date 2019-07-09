@@ -3,9 +3,9 @@ import project from './project-reducer';
 
 describe('project', () => {
   it('should return initial state', () => {
-    const expected = [];
+    const expected = {};
 
-    const result = project(undefined, [])
+    const result = project(undefined, {})
 
     expect(result).toEqual(expected)
   });

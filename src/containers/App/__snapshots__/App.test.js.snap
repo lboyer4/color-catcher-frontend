@@ -8,7 +8,7 @@ exports[`App should match the snapshot 1`] = `
     className="file-holder"
   >
     <Connect(Projects) />
-    <Palettes />
+    <Connect(Palettes) />
   </section>
 </div>
 `;
