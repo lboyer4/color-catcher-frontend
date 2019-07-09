@@ -39,3 +39,10 @@ export const addPalette = (palette) => {
 		palette
 	}
 }
+
+export const setPalettes = (palettes) => {
+	return {
+		type: 'SET_PALETTES',
+		palettes 
+	}
+}

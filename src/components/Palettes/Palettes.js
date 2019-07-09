@@ -44,6 +44,10 @@ export class Palettes extends Component {
 		}
 
 	render() {
+		const matchingPalettes = this.props.palettes.length && this.props.palettes.filter(palette => {
+			return palette.project_id === this.props.project.id
+		})
+		console.log('matches', matchingPalettes)
 		return (
 			<div className='palette-holder'>
 				<h1>{this.props.project.name}</h1>
@@ -56,7 +60,8 @@ export class Palettes extends Component {
 
 export const mapStateToProps = (state) => ({
 	project: state.project,
-	palette: state.palette
+	palette: state.palette,
+	palettes: state.palettes
 });
 
 export const mapDispatchToProps = (dispatch) => ({

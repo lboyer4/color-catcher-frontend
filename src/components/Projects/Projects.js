@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
-import { setProjects, deleteProject, addProject, pickProject } from '../../actions';
+import { setProjects, deleteProject, addProject, pickProject, setPalettes } from '../../actions';
 
 export class Projects extends Component {
 	constructor() {
@@ -15,6 +15,10 @@ export class Projects extends Component {
 		fetch('http://localhost:3001/api/v1/project')
 		.then(response => response.json())
 		.then(projects => this.props.setProjects(projects))
+
+		fetch('http://localhost:3001/api/v1/palettes')
+		.then(response => response.json())
+		.then(palettes => this.props.setPalettes(palettes))
 	}
 	
 	handleChange = (e) => {
@@ -100,13 +104,14 @@ export class Projects extends Component {
 export const mapStateToProps = (state) => ({
 	projects: state.projects,
 	project: state.project
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
 	setProjects: (projects) => dispatch(setProjects(projects)),
 	addProject: (project) => dispatch(addProject(project)),
 	pickProject: (project) => dispatch(pickProject(project)),
-	deleteProject: (id) => dispatch(deleteProject(id))
+	deleteProject: (id) => dispatch(deleteProject(id)),
+	setPalettes: (palettes) => dispatch(setPalettes(palettes))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);
