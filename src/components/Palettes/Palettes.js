@@ -15,8 +15,15 @@ export class Palettes extends Component {
 	}
 
 	addPalette = () => {
+		const colors = this.props.palette.reduce((acc, colorObject, index) => {
 
-		console.log(this.props.palette)
+			acc[`color_${index+1}`] = colorObject.color.slice(1)
+			return acc
+		}, {})
+		console.log('colors colors colors', colors)
+		// const newPalette = {name: this.state.name, }
+		// this.props.addPalette()
+		// console.log(this.props.palette)
 	}
 
 	render() {
@@ -34,5 +41,7 @@ export const mapStateToProps = (state) => ({
 	project: state.project,
 	palette: state.palette
 });
+
+
 
 export default connect(mapStateToProps)(Palettes);
