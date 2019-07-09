@@ -24,6 +24,23 @@ export class Palettes extends Component {
 		
 		const newPalette = {...colors, name: this.state.name, project_id: this.props.project.id}
 		this.props.addPalette(newPalette)
+		this.postPalette(newPalette)
+		}
+
+		postPalette = (palette) => {
+			let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(palette)
+    };
+			fetch('http://localhost:3001/api/v1/palettes', options)
+			.then(response => {
+			if(!response.ok) {
+				throw Error('Error posting palette')
+			} else {
+				return response
+			}
+		})
 		}
 
 	render() {
