@@ -5,10 +5,9 @@ class Palettes extends Component {
 	constructor() {
 		super();
 		this.state = {
-
 		}
 	}
-
+	
 	render() {
 		return (
 			<div className='palette-holder'>

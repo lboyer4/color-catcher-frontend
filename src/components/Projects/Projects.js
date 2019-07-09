@@ -54,17 +54,19 @@ export class Projects extends Component {
 		let options = {
       method: "DELETE"
     };
-		const idToDelete = e.target.getAttribute('data-key')
+		const idToDelete = e.target.parentElement.getAttribute('data-key')
 		this.props.deleteProject(idToDelete)
 		fetch(`http://localhost:3001/api/v1/project/${idToDelete}`, options)
 	}
 
+	choose
+
 	render() {
 		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
 			return (
-				<div key={project.id}>
-					<h2>{project.name}</h2>
-					<button data-key={project.id} onClick={this.deleteProject}>
+				<div data-key={project.id} key={project.id}>
+					<h2 onClick={this.chooseProject}>{project.name}</h2>
+					<button onClick={this.deleteProject}>
 						Delete
 					</button>
 				</div> 
