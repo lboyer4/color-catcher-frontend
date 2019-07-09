@@ -47,13 +47,16 @@ export class Palettes extends Component {
 		const matchingPalettes = this.props.palettes.length && this.props.palettes.filter(palette => {
 			return palette.project_id === this.props.project.id
 		})
-		console.log('matches', matchingPalettes)
+
+		const displayPalettes = matchingPalettes && matchingPalettes.map(palette => {
+			return <div key={palette.id}><h2>{palette.name}</h2></div>
+		})
 		return (
 			<div className='palette-holder'>
 				<h1>{this.props.project.name}</h1>
 				<input placeholder='Name your palette!' type='text' onChange={this.handleChange} value={this.state.name} />
 				<button onClick={this.addPalette}>Add Palette </button>
-
+				{displayPalettes}
 			</div>)
 	}
 }

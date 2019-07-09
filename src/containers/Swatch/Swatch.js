@@ -4,10 +4,6 @@ import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
 
 export class Swatch extends Component {
-	constructor() {
-		super();
-	}
-
 	handleLock = (e) => {
 		const index = e.target.parentElement.getAttribute('data-key')
 		let newColors = this.props.palette
