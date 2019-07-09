@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
-import { setProjects, deleteProject, addProject } from '../../actions';
+import { setProjects, deleteProject, addProject, pickProject } from '../../actions';
 
 
 export class Projects extends Component {
@@ -59,7 +59,13 @@ export class Projects extends Component {
 		fetch(`http://localhost:3001/api/v1/project/${idToDelete}`, options)
 	}
 
-	choose
+	chooseProject = (e) => {
+		const id = e.target.parentElement.getAttribute('data-key')
+		const project = this.props.projects.find(project => {
+			return project.id === Number(id)
+		})
+		this.props.pickProject(project)
+	}
 
 	render() {
 		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
@@ -93,12 +99,14 @@ export class Projects extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-	projects: state.project
+	projects: state.projects,
+	project: state.project
 })
 
 export const mapDispatchToProps = (dispatch) => ({
 	setProjects: (projects) => dispatch(setProjects(projects)),
 	addProject: (project) => dispatch(addProject(project)),
+	pickProject: (project) => dispatch(pickProject(project)),
 	deleteProject: (id) => dispatch(deleteProject(id))
 });
 
