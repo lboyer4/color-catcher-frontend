@@ -3,7 +3,6 @@ import './_Projects.scss';
 import { connect } from 'react-redux';
 import { setProjects, deleteProject, addProject, pickProject } from '../../actions';
 
-
 export class Projects extends Component {
 	constructor() {
 		super();
