@@ -91,4 +91,36 @@ describe('Header', () => {
 		expect(mappedProps).toEqual(expected);
 		});
 	});
+
+	describe('mapDispatchToProps', () => {
+		it('should call dispatch when using makePalette', () => {
+			const mockPalette = [
+				{	locked: false,
+					color: "#909C0E"
+				},
+				{	locked: false,
+					color: "#82BBC8"
+				},
+				{	locked: false,
+					color: "#82BBC8"
+				},
+				{
+					locked: false,
+					color: "#82BBC8"
+				},
+				{	locked: false,
+					color: "#909C0E"
+				}
+			]
+		
+		const mockDispatch = jest.fn();
+
+		const actionToDispatch = makePalette(mockPalette);
+		const mappedProps = mapDispatchToProps(mockDispatch);
+
+		mappedProps.makePalette(mockPalette)
+
+		expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+		});
+	});
 });
