@@ -19,9 +19,30 @@ export const addProject = (project) => {
 	}
 }
 
+export const pickProject = (project) => {
+	return {
+		type: 'PICK_PROJECT',
+		project
+	}
+}
+
 export const deleteProject = (id) => {
 	return {
 		type: 'DELETE_PROJECT',
 		id
+	}
+}
+
+export const addPalette = (palette) => { 
+	return {
+		type: 'ADD_PALETTE',
+		palette
+	}
+}
+
+export const setPalettes = (palettes) => {
+	return {
+		type: 'SET_PALETTES',
+		palettes 
 	}
 }

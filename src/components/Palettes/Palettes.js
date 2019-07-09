@@ -1,20 +1,74 @@
 import React, { Component } from 'react';
 import './_Palettes.scss';
+import { connect } from 'react-redux';
+import { addPalette } from '../../actions';
 
-class Palettes extends Component {
+export class Palettes extends Component {
 	constructor() {
 		super();
 		this.state = {
-
+			name: ''
 		}
 	}
 
+	handleChange = (e) => {
+		this.setState({name: e.target.value})
+	}
+
+	addPalette = () => {
+		const colors = this.props.palette.reduce((acc, colorObject, index) => {
+
+			acc[`color_${index+1}`] = colorObject.color.slice(1)
+			return acc
+		}, {})
+		
+		const newPalette = {...colors, name: this.state.name, project_id: this.props.project.id}
+		this.props.addPalette(newPalette)
+		this.postPalette(newPalette)
+		}
+
+		postPalette = (palette) => {
+			let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(palette)
+    };
+			fetch('http://localhost:3001/api/v1/palettes', options)
+			.then(response => {
+			if(!response.ok) {
+				throw Error('Error posting palette')
+			} else {
+				return response
+			}
+		})
+		}
+
 	render() {
+		const matchingPalettes = this.props.palettes.length && this.props.palettes.filter(palette => {
+			return palette.project_id === this.props.project.id
+		})
+
+		const displayPalettes = matchingPalettes && matchingPalettes.map(palette => {
+			return <div key={palette.id}><h2>{palette.name}</h2></div>
+		})
 		return (
 			<div className='palette-holder'>
-				<h1>Palettes</h1>
+				<h1>{this.props.project.name}</h1>
+				<input placeholder='Name your palette!' type='text' onChange={this.handleChange} value={this.state.name} />
+				<button onClick={this.addPalette}>Add Palette </button>
+				{displayPalettes}
 			</div>)
 	}
 }
 
-export default Palettes;
+export const mapStateToProps = (state) => ({
+	project: state.project,
+	palette: state.palette,
+	palettes: state.palettes
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+	addPalette: (palette) => dispatch(addPalette(palette))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Palettes);

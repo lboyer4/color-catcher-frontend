@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Swatch should match snapshot 1`] = `
+<section
+  className="swatch-holder"
+>
+  <div
+    className="color"
+    data-key={0}
+    key="0"
+    style={
+      Object {
+        "backgroundColor": "#909C0E",
+      }
+    }
+  >
+    <h1
+      className="hex-code"
+    >
+      #909C0E
+    </h1>
+    <h2
+      onClick={[Function]}
+    >
+      catch
+    </h2>
+  </div>
+  <div
+    className="color"
+    data-key={1}
+    key="1"
+    style={
+      Object {
+        "backgroundColor": "#82BBC8",
+      }
+    }
+  >
+    <h1
+      className="hex-code"
+    >
+      #82BBC8
+    </h1>
+    <h2
+      onClick={[Function]}
+    >
+      catch
+    </h2>
+  </div>
+  <div
+    className="color"
+    data-key={2}
+    key="2"
+    style={
+      Object {
+        "backgroundColor": "#82BBC8",
+      }
+    }
+  >
+    <h1
+      className="hex-code"
+    >
+      #82BBC8
+    </h1>
+    <h2
+      onClick={[Function]}
+    >
+      catch
+    </h2>
+  </div>
+  <div
+    className="color"
+    data-key={3}
+    key="3"
+    style={
+      Object {
+        "backgroundColor": "#82BBC8",
+      }
+    }
+  >
+    <h1
+      className="hex-code"
+    >
+      #82BBC8
+    </h1>
+    <h2
+      onClick={[Function]}
+    >
+      catch
+    </h2>
+  </div>
+  <div
+    className="color"
+    data-key={4}
+    key="4"
+    style={
+      Object {
+        "backgroundColor": "#909C0E",
+      }
+    }
+  >
+    <h1
+      className="hex-code"
+    >
+      #909C0E
+    </h1>
+    <h2
+      onClick={[Function]}
+    >
+      catch
+    </h2>
+  </div>
+</section>
+`;

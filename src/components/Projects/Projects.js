@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
-import { setProjects, deleteProject, addProject } from '../../actions';
+import { setProjects, deleteProject, addProject, pickProject, setPalettes } from '../../actions';
 
-
-class Projects extends Component {
+export class Projects extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -16,16 +15,20 @@ class Projects extends Component {
 		fetch('http://localhost:3001/api/v1/project')
 		.then(response => response.json())
 		.then(projects => this.props.setProjects(projects))
+
+		fetch('http://localhost:3001/api/v1/palettes')
+		.then(response => response.json())
+		.then(palettes => this.props.setPalettes(palettes))
 	}
 	
 	handleChange = (e) => {
-		this.setState({title: e.target.value})   
+		this.setState({title: e.target.value});  
   }
 
 	makeProject = (e) => {
-		e.preventDefault()
-		this.postProject(this.state.title)
-		this.setState({title: ''})
+		e.preventDefault();
+		this.postProject(this.state.title);
+		this.setState({title: ''});
 	}
 
 	postProject = (title) => {
@@ -54,18 +57,25 @@ class Projects extends Component {
 		let options = {
       method: "DELETE"
     };
-		const idToDelete = e.target.getAttribute('data-key')
+		const idToDelete = e.target.parentElement.getAttribute('data-key')
 		this.props.deleteProject(idToDelete)
 		fetch(`http://localhost:3001/api/v1/project/${idToDelete}`, options)
 	}
 
+	chooseProject = (e) => {
+		const id = e.target.parentElement.getAttribute('data-key')
+		const project = this.props.projects.find(project => {
+			return project.id === Number(id)
+		})
+		this.props.pickProject(project)
+	}
+
 	render() {
-		console.log(this.props.projects.length)
-		const projectNames = this.props.projects.length ? this.props.projects.map(project => { console.log(project.id)
+		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
 			return (
-				<div key={project.id}>
-					<h2>{project.name}</h2>
-					<button data-key={project.id} onClick={this.deleteProject}>
+				<div data-key={project.id} key={project.id}>
+					<h2 onClick={this.chooseProject}>{project.name}</h2>
+					<button onClick={this.deleteProject}>
 						Delete
 					</button>
 				</div> 
@@ -91,14 +101,17 @@ class Projects extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	projects: state.project
-})
+export const mapStateToProps = (state) => ({
+	projects: state.projects,
+	project: state.project
+});
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
 	setProjects: (projects) => dispatch(setProjects(projects)),
 	addProject: (project) => dispatch(addProject(project)),
-	deleteProject: (id) => dispatch(deleteProject(id))
+	pickProject: (project) => dispatch(pickProject(project)),
+	deleteProject: (id) => dispatch(deleteProject(id)),
+	setPalettes: (palettes) => dispatch(setPalettes(palettes))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);

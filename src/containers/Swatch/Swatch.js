@@ -3,14 +3,11 @@ import './_Swatch.scss';
 import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
 
-class Swatch extends Component {
-
-
+export class Swatch extends Component {
 	handleLock = (e) => {
 		const index = e.target.parentElement.getAttribute('data-key')
 		let newColors = this.props.palette
 		newColors[index].locked = !newColors[index].locked
-		this.setState({colors: newColors})
 		this.props.makePalette(newColors)
 	}
 
@@ -31,11 +28,11 @@ class Swatch extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	palette: state.palette
 })
 
- const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
  	makePalette: (palette) => dispatch(makePalette(palette))
  });
 
