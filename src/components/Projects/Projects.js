@@ -19,13 +19,13 @@ export class Projects extends Component {
 	}
 	
 	handleChange = (e) => {
-		this.setState({title: e.target.value})   
+		this.setState({title: e.target.value});  
   }
 
 	makeProject = (e) => {
-		e.preventDefault()
-		this.postProject(this.state.title)
-		this.setState({title: ''})
+		e.preventDefault();
+		this.postProject(this.state.title);
+		this.setState({title: ''});
 	}
 
 	postProject = (title) => {

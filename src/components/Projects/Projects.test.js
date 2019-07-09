@@ -53,6 +53,20 @@ describe('Projects', () => {
 		});
 	});
 
+	describe('makeProject', () => {
+		it('should call post project', () => {
+			const mockMakeProjectEvent = {
+				preventDefault: () => {}
+			};
+
+			wrapper.instance().postProject = jest.fn();
+			wrapper.instance().makeProject(mockMakeProjectEvent);
+
+			expect(wrapper.instance().postProject).toHaveBeenCalled();
+			expect(wrapper.state().title).toEqual('');
+		});
+	});
+
 	describe('mapStateToProps', () => {
 		it('should return an array of objects', () => {
 			const mockState = {
