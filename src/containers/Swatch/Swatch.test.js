@@ -41,6 +41,18 @@ describe('Swatch', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
+	describe('handleLock', () => {
+		it.skip('should toggle lock', () => {
+				const mockLockEvent = {
+				target: {
+					getAttribute: () => {
+						return 1 }
+				}
+			};
+			
+		})
+	})
+
 	describe('mapStateToProps', () => {
 		it('should return an array of objects', () => {
 			const mockState = {

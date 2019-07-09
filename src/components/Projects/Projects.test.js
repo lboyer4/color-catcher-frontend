@@ -51,7 +51,7 @@ describe('Projects', () => {
 			wrapper.instance().handleChange(mockTitleEvent);
 			expect(wrapper.state().title).toEqual('Project One');
 		});
-	});
+	}); 
 
 	describe('makeProject', () => {
 		it('should call post project', () => {
