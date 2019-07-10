@@ -22,39 +22,32 @@ describe('project', () => {
     const expected = projects
 
 
-  const result = project(undefined, actions.setProjects(projects))
+  const result = project(undefined, actions.pickProject(projects))
 
   expect(result).toEqual(expected)
   });
 
   it('should return state with new project', () => {
-    const mockProject = [{ name: "Project 3" }]
+    const mockProject = { name: "Project 3" }
     
     const expected = mockProject
 
-    const result = project(undefined, actions.addProject(mockProject))
+    const result = project(undefined, actions.pickProject(mockProject))
 
-    expect(result[0]).toEqual(expected)
+    expect(result).toEqual(expected)
   });
 
   it('should delete a project', () => {
-    const mockProject = [
-      {
+    const mockProject = {
       name: "Project 12" ,
       id: 10 
-    },
-    {
-      name: "Project 17" ,
-      id: 13 
     }
-  ]
 
-  const expected = [
-    {
+  const expected = {
       name: "Project 12",
       id: 10
     }
-  ]
+  
 
     const result = project(mockProject, actions.deleteProject(13))
 

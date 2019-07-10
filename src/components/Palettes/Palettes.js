@@ -84,6 +84,7 @@ export class Palettes extends Component {
 						</div>
 						<div className='picked-color' style={{backgroundColor: `#${palette.color_5}`}}>
 						</div>
+						<button class = 'delete-btn' onClick={this.deletePalette}>Delete Palette</button>
 						</div>
 				</div>
 				);
