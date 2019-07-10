@@ -34,4 +34,25 @@ describe('projects', () => {
     expect(result).toEqual(expected)
   });
 
+  it('should return the state with project deleted id ids do not match', () => {
+    const mockProject = [
+    {
+      name: "Project four",
+      id: 25
+    },
+    {
+      name: "Project five",
+      id: 26
+    }
+  ]
+
+  const expected = [{
+    name: "Project four",
+    id: 25
+  }]
+
+  const result = projects(mockProject, actions.deleteProject(26))
+
+  expect(result).toEqual(expected)
+  })
 })
