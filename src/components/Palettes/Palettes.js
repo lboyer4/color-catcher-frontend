@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './_Palettes.scss';
 import { connect } from 'react-redux';
 import { addPalette } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Palettes extends Component {
 	constructor() {
@@ -72,3 +73,10 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Palettes);
+
+Palettes.propTypes = {
+	addPalette: PropTypes.func,
+	palette: PropTypes.array,
+	palettes: PropTypes.array,
+	project: PropTypes.object
+}
