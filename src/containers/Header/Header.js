@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './_Header.scss';
 import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export class Header extends Component {
 
@@ -56,3 +57,8 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+	makePalette: PropTypes.func,
+	palette: PropTypes.array
+}
