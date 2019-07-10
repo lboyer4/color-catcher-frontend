@@ -23,4 +23,15 @@ describe('projects', () => {
 
   expect(result).toEqual(expected)
   });
+
+  it('should return the state with project added', () => {
+    const expected = [{
+      name: "Project three"
+    }]
+
+    const result = projects(undefined, actions.addProject(expected[0]))
+
+    expect(result).toEqual(expected)
+  });
+
 })
