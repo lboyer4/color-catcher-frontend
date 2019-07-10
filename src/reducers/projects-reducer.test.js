@@ -8,4 +8,19 @@ describe('projects', () => {
 
     expect(result).toEqual(expected)
   });
+
+  it('should return the state with set projects', () => {
+    const expected = [
+      {
+      name: "Project one"
+    },
+    {
+      name: "Project two"
+    }
+  ]
+
+  const result = projects(undefined, actions.setProjects(expected))
+
+  expect(result).toEqual(expected)
+  });
 })
