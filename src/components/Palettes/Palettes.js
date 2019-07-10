@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_Palettes.scss';
 import { connect } from 'react-redux';
-import { addPalette } from '../../actions';
+import { addPalette, deletePalette } from '../../actions';
 import PropTypes from 'prop-types';
 
 export class Palettes extends Component {
@@ -20,11 +20,12 @@ export class Palettes extends Component {
 		const colors = this.props.palette.reduce((acc, colorObject, index) => {
 
 			acc[`color_${index+1}`] = colorObject.color.slice(1)
+			// ^^ making key with color 1,2,3,4,5 and assigning to numbers without #
 			return acc
 		}, {})
 		
 		const newPalette = {...colors, name: this.state.name, project_id: this.props.project.id}
-		this.props.addPalette(newPalette)
+		// this.props.addPalette(newPalette)
 		this.postPalette(newPalette)
 		}
 
@@ -38,10 +39,22 @@ export class Palettes extends Component {
 			.then(response => {
 			if(!response.ok) {
 				throw Error('Error posting palette')
+				
 			} else {
 				return response
 			}
 		})
+		.then(result => result.json())
+		.then(body => this.props.addPalette({...palette, id: body.id}))
+		}
+
+		deletePalette = (e) => {
+			let options = {
+				method: "DELETE"
+			};
+			const paletteIdToDelete = e.target.parentElement.getAttribute('id')
+			fetch(`http://localhost:3001/api/v1/palettes/${paletteIdToDelete}`, options)
+			this.props.deletePalette(paletteIdToDelete)
 		}
 
 	render() {
@@ -50,7 +63,10 @@ export class Palettes extends Component {
 		})
 
 		const displayPalettes = matchingPalettes && matchingPalettes.map(palette => {
-			return <div key={palette.id}><h2>{palette.name}</h2></div>
+			return <div key={palette.id} id={palette.id}>
+				<h2>{palette.name}</h2>
+				<button onClick={this.deletePalette}>Delete Palette</button>
+				</div>
 		})
 		return (
 			<div className='palette-holder'>
@@ -69,7 +85,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-	addPalette: (palette) => dispatch(addPalette(palette))
+	addPalette: (palette) => dispatch(addPalette(palette)),
+	deletePalette: (id) => dispatch(deletePalette(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Palettes);
