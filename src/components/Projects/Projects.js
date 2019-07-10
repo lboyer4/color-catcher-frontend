@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './_Projects.scss';
 import { connect } from 'react-redux';
 import { setProjects, deleteProject, addProject, pickProject, setPalettes } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Projects extends Component {
 	constructor() {
@@ -115,3 +116,13 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);
+
+Projects.propTypes = {
+	addProject: PropTypes.func,
+	deleteProject: PropTypes.func,
+	pickProject: PropTypes.func,
+	project: PropTypes.object,
+	projects: PropTypes.array,
+	setPalettes: PropTypes.func,
+	setProjects: PropTypes.func
+}
