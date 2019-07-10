@@ -65,6 +65,7 @@ export class Palettes extends Component {
 				return (
 					<div className='palette-container' key={palette.id} id={palette.id}>
 						<h2>{palette.name}</h2>
+						<button onClick={this.deletePalette}>Delete Palette</button>
 						<div className='color-holder'>
 						<div className='picked-color' style={{backgroundColor: `#${palette.color_1}`}}>
 						</div>
@@ -86,7 +87,7 @@ export class Palettes extends Component {
 			<div className='palette-holder'>
 				<h1>{this.props.project.name}</h1>
 				<input placeholder='Name your palette!' type='text' onChange={this.handleChange} value={this.state.name} />
-				<button onClick={this.addPalette}>Add Palette </button>
+				<button onClick={this.addPalette}>Add Palette</button>
 				{displayPalettes}
 			</div>
 		);
