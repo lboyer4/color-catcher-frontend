@@ -7,7 +7,8 @@ export class Palettes extends Component {
 	constructor() {
 		super();
 		this.state = {
-			name: ''
+			name: '',
+			colors: []
 		}
 	}
 
@@ -49,8 +50,27 @@ export class Palettes extends Component {
 		})
 
 		const displayPalettes = matchingPalettes && matchingPalettes.map(palette => {
-			return <div key={palette.id}><h2>{palette.name}</h2></div>
+				// let displayColors = ['#' + palette.color_1, '#' + palette.color_2, '#' + palette.color_3, '#' + palette.color_4,'#' +  palette.color_5]
+
+			return (
+				<div className='palette-container' key={palette.id}>
+					<h2>{palette.name}</h2>
+					<div className='color-holder'>
+					<div className='picked-color' style={{backgroundColor: `#${palette.color_1}`}}>
+					</div>
+					<div className='picked-color' style={{backgroundColor: `#${palette.color_2}`}}>
+					</div>
+					<div className='picked-color' style={{backgroundColor: `#${palette.color_3}`}}>
+					</div>
+					<div className='picked-color' style={{backgroundColor: `#${palette.color_4}`}}>
+					</div>
+					<div className='picked-color' style={{backgroundColor: `#${palette.color_5}`}}>
+					</div>
+					</div>
+			</div>
+			)
 		})
+
 		return (
 			<div className='palette-holder'>
 				<h1>{this.props.project.name}</h1>
