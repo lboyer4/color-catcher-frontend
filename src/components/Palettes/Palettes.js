@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './_Palettes.scss';
 import { connect } from 'react-redux';
-import { addPalette } from '../../actions';
+import { addPalette, deletePalette } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Palettes extends Component {
 	constructor() {
@@ -18,13 +19,13 @@ export class Palettes extends Component {
 	addPalette = () => {
 		const colors = this.props.palette.reduce((acc, colorObject, index) => {
 			acc[`color_${index+1}`] = colorObject.color.slice(1)
-				return acc
-		}, {});
+			// ^^ making key with color 1,2,3,4,5 and assigning to numbers without #
+			return acc
+		}, {})
 		
 		const newPalette = {...colors, name: this.state.name, project_id: this.props.project.id}
-		this.props.addPalette(newPalette);
-		this.postPalette(newPalette);
-	};
+		this.postPalette(newPalette)
+		}
 
 	postPalette = (palette) => {
 		let options = {
@@ -36,11 +37,24 @@ export class Palettes extends Component {
 		.then(response => {
 			if(!response.ok) {
 				throw Error('Error posting palette')
+				
 			} else {
 				return response
 			}
 		})
-	};
+		.then(result => result.json())
+		.then(body => this.props.addPalette({...palette, id: body.id}))
+		}
+
+		deletePalette = (e) => {
+			let options = {
+				method: "DELETE"
+			};
+			const paletteIdToDelete = e.target.parentElement.getAttribute('id')
+			fetch(`http://localhost:3001/api/v1/palettes/${paletteIdToDelete}`, options)
+			this.props.deletePalette(paletteIdToDelete)
+		}
+
 
 	render() {
 		const matchingPalettes = this.props.palettes && this.props.palettes.filter(palette => {
@@ -48,8 +62,9 @@ export class Palettes extends Component {
 		});
 
 		const displayPalettes = matchingPalettes && matchingPalettes.map(palette => {
+
 				return (
-					<div className='palette-container' key={palette.id}>
+					<div className='palette-container' key={palette.id id={palette.id}}>
 						<h2>{palette.name}</h2>
 						<div className='color-holder'>
 						<div className='picked-color' style={{backgroundColor: `#${palette.color_1}`}}>
@@ -66,6 +81,7 @@ export class Palettes extends Component {
 				</div>
 				);
 			});
+
 
 		return (
 			<div className='palette-holder'>
@@ -85,7 +101,15 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-	addPalette: (palette) => dispatch(addPalette(palette))
+	addPalette: (palette) => dispatch(addPalette(palette)),
+	deletePalette: (id) => dispatch(deletePalette(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Palettes);
+
+Palettes.propTypes = {
+	addPalette: PropTypes.func,
+	palette: PropTypes.array,
+	palettes: PropTypes.array,
+	project: PropTypes.object
+}
