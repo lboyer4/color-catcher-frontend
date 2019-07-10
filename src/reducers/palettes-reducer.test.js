@@ -22,8 +22,15 @@ describe('palettes', () => {
     expect(result).toEqual(expected)
   });
 
-  it('should return the state with added palette', () => {
+  it('should return the state with an added palette', () => {
+    const expected = 
+      [{
+      color: "5B232E"
+    }]
 
+  const result = palettes(undefined, actions.addPalette(expected[0]))
+
+  expect(result).toEqual(expected)
   });
 
   it('should return the state with single deleted palette from project', () => {
