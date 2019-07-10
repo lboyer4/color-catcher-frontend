@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './_Swatch.scss';
 import { makePalette } from '../../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export class Swatch extends Component {
 	handleLock = (e) => {
@@ -37,3 +38,8 @@ export const mapDispatchToProps = (dispatch) => ({
  });
 
  export default connect(mapStateToProps, mapDispatchToProps)(Swatch);
+
+ Swatch.propTypes = {
+	makePalette: PropTypes.func,
+	palette: PropTypes.array
+ }
