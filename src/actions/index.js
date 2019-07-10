@@ -33,6 +33,13 @@ export const deleteProject = (id) => {
 	}
 }
 
+export const deletePalette = (id) => {
+	return {
+		type: 'DELETE_PALETTE',
+		id
+	}
+}
+
 export const addPalette = (palette) => { 
 	return {
 		type: 'ADD_PALETTE',
