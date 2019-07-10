@@ -65,7 +65,6 @@ export class Palettes extends Component {
 				return (
 					<div className='palette-container' key={palette.id} id={palette.id}>
 						<h2>{palette.name}</h2>
-						<button onClick={this.deletePalette}>Delete Palette</button>
 						<div className='color-holder'>
 						<div className='picked-color' style={{backgroundColor: `#${palette.color_1}`}}>
 						</div>
@@ -77,6 +76,7 @@ export class Palettes extends Component {
 						</div>
 						<div className='picked-color' style={{backgroundColor: `#${palette.color_5}`}}>
 						</div>
+						<button class = 'delete-btn' onClick={this.deletePalette}>Delete Palette</button>
 						</div>
 				</div>
 				);
