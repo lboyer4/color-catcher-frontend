@@ -37,14 +37,13 @@ export class Palettes extends Component {
 		.then(response => {
 			if(!response.ok) {
 				throw Error('Error posting palette')
-				
 			} else {
 				return response
 			}
 		})
 		.then(result => result.json())
 		.then(body => this.props.addPalette({...palette, id: body.id}))
-		}
+	}
 
 		deletePalette = (e) => {
 			let options = {
@@ -57,14 +56,14 @@ export class Palettes extends Component {
 
 
 	render() {
-		const matchingPalettes = this.props.palettes && this.props.palettes.filter(palette => {
+		const matchingPalettes = this.props.palettes.length && this.props.palettes.filter(palette => {
 			return palette.project_id === this.props.project.id
 		});
 
 		const displayPalettes = matchingPalettes && matchingPalettes.map(palette => {
 
 				return (
-					<div className='palette-container' key={palette.id id={palette.id}}>
+					<div className='palette-container' key={palette.id} id={palette.id}>
 						<h2>{palette.name}</h2>
 						<div className='color-holder'>
 						<div className='picked-color' style={{backgroundColor: `#${palette.color_1}`}}>
