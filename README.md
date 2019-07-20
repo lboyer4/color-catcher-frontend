@@ -4,6 +4,10 @@
 
  Color Catcher is a project inspired by the website Coolors. It allows a user to randomly generate colors, create projects, and save a "palette" of colors to a specific project. It is a partner project at Turing that required both a frontend and a backend to be built
  You can view the Back-End Repository [here](https://github.com/lboyer4/color-catcher-backend.git).
+ 
+ Deployed on Heroku: [Color Catcher Frontend](https://color-catcher.herokuapp.com/)
+ 
+ Heroku deployment: [Color Catcher Backend](https://colorcatcher.herokuapp.com/)
 
 ## Installation
   #### 1. Clone down this repo and cd in to it
