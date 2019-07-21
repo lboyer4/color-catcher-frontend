@@ -2,6 +2,35 @@
 	width: 40%;
 	min-height: 200px;
 	height: 100%;
-	background-color: #EF6A6A;
+	background-color: #6A7062;
 	overflow-y: scroll;
+	color: #F9F4F5;
+	text-align: center;
+}
+
+.project-name {
+	border: 1px solid #012622;
+	background-color: #F9F4F5;
+	color: #012622;
+	margin: 0;
+	padding: 5px;
+	height: 50px;
+}
+
+.delete-button {
+	width: 25px;
+	height: 20px;
+	margin-left: 5px;
+	background-color: #F9F4F5;
+	color: #012622;
+	border-radius: 2px;
+	border: 1px solid #012622;
+}
+
+.delete-button:hover {
+	background-color: #6A7062;
+	color: #F9F4F5;
+	height: 22px;
+	width: 26px;
+	border: 2px solid #F9F4F5;
 }
