@@ -18,7 +18,7 @@ export class Swatch extends Component {
 			palette.map((element, index) => {
 				return <div className='color' key={index} data-key={index} style={{backgroundColor: element.color}}>
 				<h1 className='hex-code'>{element.color}</h1>
-				<h2 onClick={this.handleLock}>{element.locked ? 'release' : 'catch'}</h2>
+				<h2 className='catch' onClick={this.handleLock}>{element.locked ? 'release' : 'catch'}</h2>
 				</div>
 			})
 			
