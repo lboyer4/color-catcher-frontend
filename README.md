@@ -25,10 +25,11 @@
  ## Wireframes
  <img width="626" alt="Screen Shot 2019-07-10 at 5 20 27 PM" src="https://user-images.githubusercontent.com/40863560/61019084-2a145000-a356-11e9-897b-6204591e75fa.png">
 
-## Tech
- Frontend: ReactJS, Redux, Jest, Enzyme, JSX
- 
- Backend: Node.js Express
+## Goals
+The goals of this project's frontend was to create an App that generates random colors, allows you to "freeze" colors, and save projects and palettes to the backend. It uses ReactJS, Redux, Enzyme, and Jest.
+
+The goals of this project's backend was to get comfortable using Express and Node.js, and to implement Travis CI.
+
 ## Contributors
 [Lauren Boyer](https://github.com/lboyer4)
 
