@@ -41,7 +41,7 @@ export class Header extends Component {
 			<main>
 				<header>
 					<h1>Color Catcher</h1>
-					<button className='generate' onClick={this.handleClick} >Generate Colors</button>
+					<button className='generate' onClick={this.handleClick} >GENERATE COLORS</button>
 				</header>
 			</main>
 		)

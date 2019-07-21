@@ -74,10 +74,10 @@ export class Projects extends Component {
 	render() {
 		const projectNames = this.props.projects.length ? this.props.projects.map(project => {
 			return (
-				<div data-key={project.id} key={project.id}>
-					<h2 onClick={this.chooseProject}>{project.name}</h2>
-					<button onClick={this.deleteProject}>
-						Delete
+				<div className='project' data-key={project.id} key={project.id}>
+					<h4 onClick={this.chooseProject}>{project.name}</h4>
+					<button className="delete-button" onClick={this.deleteProject}>
+						X
 					</button>
 				</div> 
 			)
@@ -85,17 +85,18 @@ export class Projects extends Component {
 
 		return (
 			<div className='project-holder'>
+				<h1 className='project-name'>Your Projects</h1>
 				<form> 
-					<label>Name Project</label>
 					<input
-						type="text"
+						className='create-project'
+						type='text'
 	          onChange={this.handleChange}
 	          name='title'
+	          placeholder="Name Your Project"
 	          value={this.state.title}
 	         />
-					<button onClick={this.makeProject}>Create</button> 
+					<button className='make-project-btn' onClick={this.makeProject}>Create</button> 
 				</form>
-				<h1>Projects</h1>
 				{projectNames}
 			</div>
 		)

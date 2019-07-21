@@ -1,11 +1,19 @@
 header {
 	display: flex;
 	justify-content: space-between;
-	background-color: #EF6A6A;
+	background-color: #F9F4F5;
+	color: #012622;
+	border: 1px solid #012622;
 }
 
 .generate {
-	height: 20px;
-	margin-top: 10px;
-	
+	height: 35px;
+	margin: 25px;
+	border-radius: 3px;
+	border: 1px solid #012622;
+}
+
+.generate:hover {
+	background-color: #6A7062;
+	color: #F9F4F5;
 }
