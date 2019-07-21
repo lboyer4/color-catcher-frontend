@@ -11,5 +11,17 @@
 	width: 20%;
 	background-color: pink;
 	justify-content: center;
+	text-align: center;
 }
 
+.catch {
+	opacity:0.8;
+	border: 1px solid #012622;
+	background-color: #F9F4F5;
+	
+}
+
+.catch:hover {
+	cursor: pointer;
+	opacity: 1;
+}
