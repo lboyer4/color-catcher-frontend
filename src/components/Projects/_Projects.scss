@@ -25,6 +25,7 @@
 	color: #012622;
 	border-radius: 2px;
 	border: 1px solid #012622;
+	margin-top: 20px;
 }
 
 .delete-button:hover {
@@ -33,4 +34,25 @@
 	height: 22px;
 	width: 26px;
 	border: 2px solid #F9F4F5;
+}
+
+.make-project-btn {
+	width: 55px;
+	height: 30px;
+	margin-left: 5px;
+	background-color: #F9F4F5;
+	color: #012622;
+	border-radius: 5px;
+	border: 1px solid #012622;
+}
+
+.create-project {
+	height: 25px;
+	width: 70%;
+	margin-top: 10px
+}
+
+.project {
+	display: flex;
+	justify-content: center;
 }
