@@ -8,7 +8,7 @@ export class Palettes extends Component {
 	constructor() {
 		super();
 		this.state = {
-			name: ''
+			name: 'Enter Palette Name Here!'
 		}
 	}
 
@@ -62,8 +62,10 @@ export class Palettes extends Component {
 		const createPaletteInput =
 			<div> 
 				<h2 className='current-project'>Current Project: "<span>{this.props.project.name}</span>"</h2>
+				<div className='input-holder'>
 				<input className='palette-name' placeholder='Name your palette!' type='text' onChange={this.handleChange} value={this.state.name} />
 				<button className='add-palette-btn' onClick={this.addPalette}>Add Palette </button>
+				</div>
 			</div>
 
 		const displayInput = this.props.project.name && createPaletteInput
@@ -89,10 +91,8 @@ export class Palettes extends Component {
 				);
 			});
 
-
 		return (
 			<div className='palette-holder'>
-				
 				{displayInput}
 				{displayPalettes}
 			</div>
