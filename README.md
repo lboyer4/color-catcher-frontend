@@ -15,7 +15,7 @@
   #### 4. Clone down the backend repo and cd in to
   ```git clone https://github.com/lboyer4/color-catcher-backend.git```
   #### 5. Run the server
-  ```nodemon server.js```
+  ```npm start```
   #### 6. Run the frontend
   ```npm start```
 
