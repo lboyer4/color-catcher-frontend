@@ -10,7 +10,7 @@ exports[`Header should match snapshot 1`] = `
       className="generate"
       onClick={[Function]}
     >
-      Generate Colors
+      GENERATE COLORS
     </button>
   </header>
 </main>

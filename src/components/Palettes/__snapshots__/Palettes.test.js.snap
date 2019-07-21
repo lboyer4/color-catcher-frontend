@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palettes should match the snapshot 1`] = `
+<div
+  className="palette-holder"
+>
+  <div>
+    <h2
+      className="current-project"
+    >
+      Current Project: "
+      <span>
+        project
+      </span>
+      "
+    </h2>
+    <div
+      className="input-holder"
+    >
+      <input
+        className="palette-name"
+        onChange={[Function]}
+        placeholder="Name your palette!"
+        type="text"
+        value="Enter Palette Name Here!"
+      />
+      <button
+        className="add-palette-btn"
+        onClick={[Function]}
+      >
+        Add Palette 
+      </button>
+    </div>
+  </div>
+</div>
+`;
