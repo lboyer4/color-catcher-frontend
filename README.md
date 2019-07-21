@@ -19,7 +19,7 @@
   #### 6. Run the frontend
   ```npm start```
  ## Frontend UI
- ![palettepicker-shot](/Users/laurenboyer/Desktop/colorpicker.png)
+ ![palettepicker-shot]
  
  ## Wireframes
  <img width="626" alt="Screen Shot 2019-07-10 at 5 20 27 PM" src="https://user-images.githubusercontent.com/40863560/61019084-2a145000-a356-11e9-897b-6204591e75fa.png">
