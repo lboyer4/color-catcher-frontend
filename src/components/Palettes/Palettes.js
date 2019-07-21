@@ -93,7 +93,6 @@ export class Palettes extends Component {
 			<div className='palette-holder'>
 				<h1>{this.props.project.name}</h1>
 				{displayInput}
-
 				{displayPalettes}
 			</div>
 		);
