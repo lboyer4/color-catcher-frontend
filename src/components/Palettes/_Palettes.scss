@@ -19,6 +19,7 @@
 
 .palette-container {
 	display: flex;
+	padding: 10px;
 }
 
 .delete-btn {
@@ -27,3 +28,41 @@
 	width: 100px;
 	margin: 3px;
 }
+
+.current-project {
+	text-align: center;
+	background-color: #F9F4F5;
+	color: #012622;
+	margin: 0;
+	padding: 10px 0 0 0;
+	height: 50px;
+}
+
+.palette-name {
+	height: 25px;
+	width: 70%;
+	margin-top: 10px;
+	margin-left: 5px;
+	border-radius: 2px;
+}
+
+.input-holder {
+	display: flex;
+}
+
+span {
+	font-family: Georgia;
+}
+
+.add-palette-btn {
+	width: 55px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 8px;
+	background-color: #F9F4F5;
+	color: #012622;
+	border-radius: 5px;
+	border: 1px solid #012622;
+}
+
+
