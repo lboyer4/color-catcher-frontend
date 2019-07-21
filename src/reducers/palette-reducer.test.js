@@ -11,9 +11,9 @@ describe('palette', () => {
   });
 
   it('should return the state with a new palette',  () => {
-    const expected = {
+    const expected = [{
       color: "00FF00"
-    }
+    }]
 
     const result = palette(undefined, actions.makePalette(expected))
 
