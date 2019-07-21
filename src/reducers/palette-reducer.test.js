@@ -11,9 +11,23 @@ describe('palette', () => {
   });
 
   it('should return the state with a new palette',  () => {
-    const expected = {
-      color: "00FF00"
-    }
+    const expected = [
+      { locked: false,
+        color: "#816379"
+      },
+      { locked: false,
+        color: "#816379"
+      },
+      { locked: false,
+        color: "#816379"
+      },
+      { locked: false,
+        color: "#816379"
+      },
+      { locked: false,
+        color: "#816379"
+      }
+    ];
 
     const result = palette(undefined, actions.makePalette(expected))
 

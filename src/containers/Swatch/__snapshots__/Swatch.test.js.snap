@@ -20,6 +20,7 @@ exports[`Swatch should match snapshot 1`] = `
       #909C0E
     </h1>
     <h2
+      className="catch"
       onClick={[Function]}
     >
       catch
@@ -41,6 +42,7 @@ exports[`Swatch should match snapshot 1`] = `
       #82BBC8
     </h1>
     <h2
+      className="catch"
       onClick={[Function]}
     >
       catch
@@ -62,6 +64,7 @@ exports[`Swatch should match snapshot 1`] = `
       #82BBC8
     </h1>
     <h2
+      className="catch"
       onClick={[Function]}
     >
       catch
@@ -83,6 +86,7 @@ exports[`Swatch should match snapshot 1`] = `
       #82BBC8
     </h1>
     <h2
+      className="catch"
       onClick={[Function]}
     >
       catch
@@ -104,6 +108,7 @@ exports[`Swatch should match snapshot 1`] = `
       #909C0E
     </h1>
     <h2
+      className="catch"
       onClick={[Function]}
     >
       catch
