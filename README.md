@@ -18,6 +18,7 @@
   ```nodemon server.js```
   #### 6. Run the frontend
   ```npm start```
+
  ## Frontend UI
  ![palettepicker-shot](./src/images/colorpicker.png)
  
@@ -30,4 +31,5 @@
  Backend: Node.js Express
 ## Contributors
 [Lauren Boyer](https://github.com/lboyer4)
+
 [Sally Haefling](https://github.com/SallyHaefling)
